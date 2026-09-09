@@ -12,7 +12,7 @@ VS Code → Continue → Ollama          VS Code → Local AI Next Edit → Olla
                        └──────── 共用 qwen2.5-coder:1.5b ────────┘
 ```
 
-## 可以修正什么
+## 它可以做什么
 
 当你刚编辑过一行，并且 VS Code 在附近报告错误或警告时，扩展可以提出最小修改建议：
 
