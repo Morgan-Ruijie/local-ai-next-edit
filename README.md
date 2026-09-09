@@ -12,7 +12,7 @@ VS Code → Continue → Ollama          VS Code → Local AI Next Edit → Olla
                        └──────── same qwen2.5-coder:1.5b ────────┘
 ```
 
-## What it fixes?
+## What it fixes
 
 When you have just edited a line and VS Code reports a nearby error or warning, the extension can suggest a minimal replacement:
 
