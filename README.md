@@ -1,5 +1,7 @@
 # Local AI Next Edit
 
+[English](README.md) | [简体中文](README-zh.md)
+
 Local, diagnostic-aware code correction for Visual Studio Code, powered by the Ollama model you already have loaded.
 
 Continue can keep handling ordinary FIM autocomplete. Local AI Next Edit handles small rewrites of existing code—using the same `qwen2.5-coder:1.5b` model, the same **Tab** key, and no cloud API.
@@ -144,3 +146,4 @@ npm run package
 ## License
 
 [MIT](LICENSE)
+
