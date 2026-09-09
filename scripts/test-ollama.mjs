@@ -23,4 +23,3 @@ for (const [code, diagnostic, expected, contextBefore] of cases) {
   console.log(`${pass ? "PASS" : "FAIL"}: ${JSON.stringify(code)} -> ${JSON.stringify(actual)} (expected ${JSON.stringify(expected)})`);
   if (!pass) process.exitCode = 1;
 }
-

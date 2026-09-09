@@ -174,4 +174,3 @@ export function repairObviousIdentifierTypo(original: string, language: string, 
   const start = best.token.index!;
   return `${original.slice(0, start)}${best.replacement}${original.slice(start + best.token[0].length)}`;
 }
-

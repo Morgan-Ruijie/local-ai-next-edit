@@ -66,4 +66,3 @@ export async function rewriteWithOllama(
   return sanitizeReplacement(secondRaw, original, options.maxEditLines)
     ?? repairObviousIdentifierTypo(original, input.language, input.diagnostic);
 }
-

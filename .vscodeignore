@@ -9,4 +9,3 @@ tsconfig.json
 *.vsix
 dist/test/**
 dist/**/*.map
-

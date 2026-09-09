@@ -37,4 +37,3 @@ test("repairs an undefined dotted receiver from repeated nearby usage", () => {
   assert.equal(repairObviousContextTypo("pkt.show()", context, "", "未定义“pkt”"), "plt.show()");
   assert.equal(repairObviousContextTypo("pkt.show()", "abc.run()\ndef.run()", "", "未定义“pkt”"), undefined);
 });
-

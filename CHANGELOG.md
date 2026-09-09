@@ -14,4 +14,3 @@ All notable changes to this project will be documented in this file.
 
 - Initial Python-focused MVP.
 - Added diagnostic-gated rewrites, debounce, cancellation, Quick Fix support, and local Ollama integration.
-

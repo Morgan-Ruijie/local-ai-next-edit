@@ -56,7 +56,7 @@ For Python, install and enable a diagnostic provider such as Pylance. The automa
 
 ## Install
 
-Download the `.vsix` from the [latest GitHub release](https://github.com/Morgan-Ruijie/local-ai-next-edit/releases/latest), then in VS Code:
+Download [local-ai-next-edit-0.1.1.vsix](https://github.com/Morgan-Ruijie/local-ai-next-edit/raw/refs/heads/main/local-ai-next-edit-0.1.1.vsix), then in VS Code:
 
 1. Open the Extensions view.
 2. Open the `...` menu.
@@ -144,5 +144,3 @@ npm run package
 ## License
 
 [MIT](LICENSE)
-
-
