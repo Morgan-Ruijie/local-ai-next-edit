@@ -1,0 +1,128 @@
+{
+  "name": "local-ai-next-edit",
+  "displayName": "Local AI Next Edit",
+  "description": "Diagnostic-gated local inline rewrites using an existing Ollama model.",
+  "version": "0.1.1",
+  "publisher": "local",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Morgan-Ruijie/local-ai-next-edit.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Morgan-Ruijie/local-ai-next-edit/issues"
+  },
+  "homepage": "https://github.com/Morgan-Ruijie/local-ai-next-edit#readme",
+  "engines": {
+    "vscode": "^1.136.0"
+  },
+  "categories": [
+    "Machine Learning",
+    "Other"
+  ],
+  "activationEvents": [
+    "onStartupFinished",
+    "onLanguage:python",
+    "onCommand:localNextEdit.trigger"
+  ],
+  "main": "./dist/extension.js",
+  "scripts": {
+    "clean": "node -e \"require('fs').rmSync('dist',{recursive:true,force:true})\"",
+    "compile": "tsc -p .",
+    "test": "npm run compile && node --test dist/test/*.test.js",
+    "test:ollama": "npm run compile && node scripts/test-ollama.mjs",
+    "package": "npm run compile && vsce package --no-dependencies --allow-missing-repository"
+  },
+  "devDependencies": {
+    "@types/node": "^24.0.0",
+    "@types/vscode": "^1.136.0",
+    "@vscode/vsce": "^3.6.0",
+    "typescript": "^5.9.0"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "localNextEdit.trigger",
+        "title": "Local Next Edit: Check Current Diagnostic"
+      },
+      {
+        "command": "localNextEdit.clearSuggestion",
+        "title": "Local Next Edit: Clear Suggestion"
+      },
+      {
+        "command": "localNextEdit.acceptSuggestion",
+        "title": "Local Next Edit: Accept Suggestion"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "localNextEdit.acceptSuggestion",
+        "key": "tab",
+        "when": "editorTextFocus && localNextEdit.hasSuggestion && !editorHasSelection && !suggestWidgetVisible && !renameInputVisible"
+      },
+      {
+        "command": "localNextEdit.clearSuggestion",
+        "key": "escape",
+        "when": "editorTextFocus && localNextEdit.hasSuggestion"
+      }
+    ],
+    "configuration": {
+      "title": "Local AI Next Edit",
+      "properties": {
+        "localNextEdit.enabled": {
+          "type": "boolean",
+          "default": true,
+          "description": "Enable diagnostic-gated local rewrite suggestions."
+        },
+        "localNextEdit.ollamaUrl": {
+          "type": "string",
+          "default": "http://localhost:11434",
+          "description": "Ollama base URL. Only loopback addresses are accepted."
+        },
+        "localNextEdit.model": {
+          "type": "string",
+          "default": "qwen2.5-coder:1.5b",
+          "description": "Existing Ollama model to reuse."
+        },
+        "localNextEdit.debounceMs": {
+          "type": "number",
+          "default": 400,
+          "minimum": 300,
+          "maximum": 5000,
+          "description": "Delay after typing before checking diagnostics."
+        },
+        "localNextEdit.maxEditLines": {
+          "type": "number",
+          "default": 3,
+          "minimum": 1,
+          "maximum": 3,
+          "description": "Safety limit for model output. Stable inline replacement currently uses one line; multi-line results are rejected."
+        },
+        "localNextEdit.showInlinePreview": {
+          "type": "boolean",
+          "default": true,
+          "description": "Show an explicit old → replacement preview so diagnostic rewrites remain visible even when another completion provider is active."
+        },
+        "localNextEdit.keepAlive": {
+          "type": "string",
+          "default": "30m",
+          "description": "Ollama keep_alive value so Continue and this extension reuse the same loaded model."
+        },
+        "localNextEdit.exclude": {
+          "type": "array",
+          "items": { "type": "string" },
+          "default": [
+            "**/node_modules/**",
+            "**/.git/**",
+            "**/dist/**",
+            "**/build/**",
+            "**/*.min.js",
+            "**/*.lock"
+          ],
+          "description": "Simple glob patterns excluded from automatic rewrites."
+        }
+      }
+    }
+  }
+}
+
